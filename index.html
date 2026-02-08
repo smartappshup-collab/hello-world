@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>منصة التعلم للطلبة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      margin:0; font-family:Arial, sans-serif; background:#0f172a; color:#fff;
+    }
+    header{
+      height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      background:linear-gradient(135deg,#2563eb,#1e293b);
+      text-align:center;
+      transition:opacity .6s, transform .6s;
+    }
+    header.hide{
+      opacity:0; transform:translateY(-50px); pointer-events:none; height:0; overflow:hidden;
+    }
+    h1{font-size:3rem; animation:fadeDown 1.2s;}
+    p{font-size:1.2rem; max-width:600px; animation:fadeUp 1.5s;}
+    button{
+      margin-top:30px; padding:15px 30px; font-size:1rem; border:none; border-radius:10px;
+      background:#22c55e; color:#000; cursor:pointer; transition:transform .3s, box-shadow .3s;
+    }
+    button:hover{transform:scale(1.1); box-shadow:0 0 15px #22c55e;}
+
+    section{
+      display:none;
+      padding:80px 10%; background:#020617;
+      animation:fadeUp 1s;
+    }
+    section.show{display:block;}
+
+    .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:25px;}
+    .card{
+      background:#020617; border:1px solid #1e293b; border-radius:15px; padding:25px;
+    }
+    .toggle{
+  width:100%; text-align:right; background:#1e293b; color:#fff;
+  border:none; padding:15px; font-size:1.1rem; border-radius:10px;
+  cursor:pointer; transition:background .3s;
+}
+.toggle:hover{background:#2563eb;}
+.content{display:none; margin-top:15px;}
+    .card p{font-size:.95rem; line-height:1.6;}
+    .video{
+      margin-top:15px; background:#000; border-radius:10px; overflow:hidden;
+    }
+    .video iframe{width:100%; height:200px; border:none;}
+
+    footer{text-align:center; padding:20px; background:#020617; color:#94a3b8;}
+
+    @keyframes fadeDown{from{opacity:0; transform:translateY(-40px);}to{opacity:1;}}
+    @keyframes fadeUp{from{opacity:0; transform:translateY(40px);}to{opacity:1;}}
+  </style>
+</head>
+<body>
+
+<header id="hero">
+  <h1>مرحبا بالطلبة 👨‍🎓👩‍🎓</h1>
+  <p>منصة احترافية للتعلم الذاتي خطوة بخطوة</p>
+  <button onclick="enterSite()">بدا التعلم</button>
+</header>
+
+<section id="courses">
+  <h2>مجالات التعلم</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <button class="toggle" onclick="toggleContent(this)">💻 البرمجة</button>
+      <div class="content">
+        <p>
+          1. شنو هي البرمجة؟<br>
+          2. كيفاش كتخدم؟<br>
+          3. لغات البرمجة<br>
+          4. HTML و CSS<br>
+          5. JavaScript<br>
+          6. Python<br>
+          7. أمثلة تطبيقية<br>
+          8. أخطاء شائعة<br>
+          9. كيفاش تطوّر راسك<br>
+          10. المسار المهني
+        </p>
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/UB1O30fR-EE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="toggle" onclick="toggleContent(this)">🎨 التصميم</button>
+      <div class="content">
+        <p>
+          1. شنو هو التصميم؟<br>
+          2. UI و UX<br>
+          3. الألوان<br>
+          4. الخطوط<br>
+          5. Canva و Figma<br>
+          6. تصميم مواقع<br>
+          7. تصميم تطبيقات<br>
+          8. أمثلة حقيقية<br>
+          9. تطوير الذوق<br>
+          10. فرص العمل
+        </p>
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/FTlczfR82mQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <button class="toggle" onclick="toggleContent(this)">🔐 الأمن المعلوماتي</button>
+      <div class="content">
+        <p>
+          1. شنو هو الأمن المعلوماتي؟<br>
+          2. أنواع الهجمات<br>
+          3. حماية الحسابات<br>
+          4. كلمات المرور<br>
+          5. الفيروسات<br>
+          6. الاختراق الأخلاقي<br>
+          7. أدوات الحماية<br>
+          8. أمثلة واقعية<br>
+          9. أخطاء خطيرة<br>
+          10. المستقبل المهني
+        </p>
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/inWWhr5tnEA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 منصة تعلم الطلبة
+</footer>
+
+<script>
+  function enterSite(){
+    document.getElementById('hero').classList.add('hide');
+    const courses = document.getElementById('courses');
+    courses.classList.add('show');
+    courses.scrollIntoView({behavior:'smooth'});
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.toggle');
+    toggles.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        document.querySelectorAll('.content').forEach(c => {
+          if(c !== content) c.style.display = 'none';
+        });
+        content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
